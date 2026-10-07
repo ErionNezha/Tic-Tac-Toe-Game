@@ -1,0 +1,325 @@
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X dhe O · Mund AI-në — Erion Nezha</title>
+<meta name="description" content="Loja klasike X dhe O kundër inteligjencës artificiale — a mund ta mundësh në nivelin e vështirë?">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<style id="appcss">
+/* ============ ERION NEZHA · ULTRA-PREMIUM THEME (shared) ============ */
+:root{
+  --bg0:#070b16; --bg1:#0b1124; --gold:#D4AF37; --gold2:#f3dd8f;
+  --ink:#eef1f7; --mut:#9aa3b8; --glass:rgba(255,255,255,.055);
+  --line:rgba(212,175,55,.22); --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  background:var(--bg0); color:var(--ink); min-height:100vh; overflow-x:hidden;
+}
+.bg-orbs{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.bg-orbs span{position:absolute;border-radius:50%;filter:blur(90px);opacity:.28;animation:drift 14s ease-in-out infinite alternate}
+.bg-orbs span:nth-child(1){width:520px;height:520px;left:-140px;top:-120px;background:radial-gradient(circle,#D4AF37,transparent 65%)}
+.bg-orbs span:nth-child(2){width:620px;height:620px;right:-180px;top:30%;background:radial-gradient(circle,#2b3f8f,transparent 65%);animation-delay:-5s}
+.bg-orbs span:nth-child(3){width:460px;height:460px;left:20%;bottom:-160px;background:radial-gradient(circle,#6b4fa1,transparent 65%);animation-delay:-9s}
+@keyframes drift{to{transform:translate(60px,40px) scale(1.12)}}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.site-header{padding:64px 0 30px;text-align:center}
+.overline{letter-spacing:.42em;font-size:11px;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.site-header h1{font-size:clamp(30px,5vw,52px);font-weight:800;line-height:1.15;
+  background:linear-gradient(120deg,#fff 20%,var(--gold2) 55%,var(--gold) 80%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.site-header p{color:var(--mut);max-width:640px;margin:14px auto 0;font-size:16px;line-height:1.65}
+.live-badge{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:8px 18px;border-radius:999px;
+  border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(10px);font-size:13px;color:var(--gold2);letter-spacing:.08em}
+.live-badge i{width:9px;height:9px;border-radius:50%;background:#3ddc84;box-shadow:0 0 12px #3ddc84;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.demo-wrap{margin:26px 0 54px}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:var(--r);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 24px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08);padding:30px}
+.code-section{margin:0 0 60px}
+.code-section h2{font-size:24px;margin-bottom:6px}
+.code-section .sub{color:var(--mut);font-size:14px;margin-bottom:18px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0;align-items:center}
+.ctab{padding:10px 22px;border-radius:12px 12px 0 0;border:1px solid var(--line);border-bottom:none;cursor:pointer;
+  background:rgba(255,255,255,.03);color:var(--mut);font-size:14px;font-weight:600;letter-spacing:.04em;transition:.25s}
+.ctab.active{background:linear-gradient(180deg,rgba(212,175,55,.22),rgba(212,175,55,.06));color:var(--gold2)}
+.ctab:hover{color:var(--ink)}
+#copyBtn{margin-left:auto;padding:9px 20px;border-radius:10px;border:1px solid var(--line);cursor:pointer;
+  background:linear-gradient(120deg,var(--gold),#a8842a);color:#0a0e1a;font-weight:700;font-size:13px;transition:.25s}
+#copyBtn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(212,175,55,.35)}
+.codebox{border:1px solid var(--line);border-radius:0 14px 14px 14px;overflow:hidden;background:#0d1326}
+.codebox pre{margin:0;max-height:560px;overflow:auto}
+.codebox pre code{display:block;padding:22px;font-family:"Cascadia Code","Fira Code",Consolas,monospace;font-size:13.5px;line-height:1.7;background:transparent}
+.codebox pre::-webkit-scrollbar{width:10px;height:10px}
+.codebox pre::-webkit-scrollbar-thumb{background:rgba(212,175,55,.35);border-radius:8px}
+footer{text-align:center;padding:34px 20px 44px;color:var(--mut);font-size:14px;border-top:1px solid rgba(212,175,55,.14)}
+footer strong{color:var(--gold2)}
+/* ============ APP CSS (per projekt) ============ */
+/* ============ TIC-TAC-TOE CSS ============ */
+.ttt-demo{text-align:center}
+.ttt-setup{display:flex;flex-direction:column;gap:12px;align-items:center;margin:6px 0 22px}
+.ttt-group{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}
+.ttt-label{color:var(--mut);font-size:13px;font-weight:600;margin-right:4px}
+.ttt-chip{padding:9px 18px;border-radius:999px;border:1px solid var(--line);cursor:pointer;
+  background:rgba(255,255,255,.04);color:var(--ink);font-size:13.5px;font-weight:700;transition:.22s}
+.ttt-chip:hover{border-color:var(--gold);transform:translateY(-1px)}
+.ttt-chip.active{background:linear-gradient(120deg,var(--gold2),var(--gold) 60%,#a8842a);
+  color:#0a0e1a;border-color:transparent;box-shadow:0 6px 18px rgba(212,175,55,.35)}
+.ttt-score{display:flex;gap:14px;justify-content:center;margin-bottom:24px;flex-wrap:wrap}
+.ttt-scard{background:rgba(0,0,0,.25);border:1px solid rgba(212,175,55,.16);border-radius:14px;
+  padding:14px 28px;min-width:110px}
+.ttt-snum{display:block;font-size:30px;font-weight:800;color:var(--gold2);font-variant-numeric:tabular-nums}
+.ttt-stxt{font-size:12px;color:var(--mut);letter-spacing:.12em;text-transform:uppercase}
+.ttt-board{display:grid;grid-template-columns:repeat(3,108px);grid-template-rows:repeat(3,108px);
+  gap:10px;justify-content:center;margin:0 auto 20px}
+.ttt-cell{font-size:52px;font-weight:800;border-radius:16px;cursor:pointer;
+  background:rgba(255,255,255,.045);border:1px solid var(--line);color:var(--ink);
+  transition:transform .15s,background .2s,box-shadow .25s;display:flex;align-items:center;justify-content:center}
+.ttt-cell:hover:empty{background:rgba(212,175,55,.1);transform:scale(1.04)}
+.ttt-cell.filled{cursor:default}
+.ttt-cell.win{background:rgba(212,175,55,.28)!important;border-color:var(--gold);
+  box-shadow:0 0 22px rgba(212,175,55,.55);animation:winpop .5s ease}
+@keyframes winpop{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
+.ttt-cell.x{color:#7cc4ff}
+.ttt-cell.o{color:var(--gold2)}
+.ttt-msg{font-size:17px;font-weight:700;min-height:30px;margin-bottom:18px;color:var(--ink)}
+.ttt-msg.good{color:#3ddc84}
+.ttt-msg.bad{color:#ff8fa0}
+.ttt-msg.draw{color:var(--gold2)}
+.ttt-controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+@media(max-width:480px){.ttt-board{grid-template-columns:repeat(3,88px);grid-template-rows:repeat(3,88px)}.ttt-cell{font-size:42px}}
+
+@media(max-width:640px){.glass{padding:20px}.site-header{padding:44px 0 22px}}
+</style>
+</head>
+<body>
+<div class="bg-orbs"><span></span><span></span><span></span></div>
+
+<header class="site-header wrap">
+  <div class="overline">Erion Nezha · Web Projects</div>
+  <h1>X dhe O · Mund AI-në</h1>
+  <p>Loja klasike X dhe O kundër inteligjencës artificiale — a mund ta mundësh në nivelin e vështirë?</p>
+  <div class="live-badge"><i></i> LIVE DEMO</div>
+</header>
+
+<main class="wrap">
+  <section class="demo-wrap">
+    <div class="glass" id="demo">
+<!-- ===== TIC-TAC-TOE DEMO ===== -->
+<div class="ttt-demo">
+  <p class="demo-tag">DEMO · AI luan lokalisht, rezultati ruhet në shfletuesin tënd</p>
+
+  <div class="ttt-setup">
+    <div class="ttt-group">
+      <span class="ttt-label">Niveli:</span>
+      <button class="ttt-chip active" data-level="easy">😌 I lehtë</button>
+      <button class="ttt-chip" data-level="medium">🙂 I mesëm</button>
+      <button class="ttt-chip" data-level="hard">🤖 I vështirë</button>
+    </div>
+    <div class="ttt-group">
+      <span class="ttt-label">Shenja jote:</span>
+      <button class="ttt-chip active" data-mark="X">❌ X</button>
+      <button class="ttt-chip" data-mark="O">⭕ O</button>
+    </div>
+  </div>
+
+  <div class="ttt-score">
+    <div class="ttt-scard"><span class="ttt-snum" id="scoreYou">0</span><span class="ttt-stxt">Ti</span></div>
+    <div class="ttt-scard"><span class="ttt-snum" id="scoreDraw">0</span><span class="ttt-stxt">Barazime</span></div>
+    <div class="ttt-scard"><span class="ttt-snum" id="scoreAi">0</span><span class="ttt-stxt">AI</span></div>
+  </div>
+
+  <div class="ttt-board" id="tttBoard">
+    <button class="ttt-cell" data-i="0"></button><button class="ttt-cell" data-i="1"></button><button class="ttt-cell" data-i="2"></button>
+    <button class="ttt-cell" data-i="3"></button><button class="ttt-cell" data-i="4"></button><button class="ttt-cell" data-i="5"></button>
+    <button class="ttt-cell" data-i="6"></button><button class="ttt-cell" data-i="7"></button><button class="ttt-cell" data-i="8"></button>
+  </div>
+
+  <p class="ttt-msg" id="tttMsg">Ti luan i pari — fati i mbarë! 🍀</p>
+
+  <div class="ttt-controls">
+    <button class="sw-btn sw-primary" id="btnNewGame">🔄 Loja e re</button>
+    <button class="sw-btn sw-danger" id="btnResetScore">🗑 Reseto rezultatin</button>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  <section class="code-section">
+    <h2>💻 Kodi Burim</h2>
+    <p class="sub">I gjithë kodi i këtij projekti — i lexueshëm, i kopjueshëm, gati për t'u mësuar.</p>
+    <div class="tabs">
+      <button class="ctab active" data-tab="html">HTML</button>
+      <button class="ctab" data-tab="css">CSS</button>
+      <button class="ctab" data-tab="js">JavaScript</button>
+      <button id="copyBtn">Kopjo kodin</button>
+    </div>
+    <div class="codebox"><pre><code id="codeView" class="language-html"></code></pre></div>
+  </section>
+</main>
+
+<footer>Krijuar nga <strong>Erion Nezha</strong> · © 2026 — Të gjitha të drejtat e rezervuara</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script id="appjs">
+/* ============ TIC-TAC-TOE APP JS ============ */
+(function(){
+  "use strict";
+  var LS_SCORE="ttt40_score_v1";
+  var WINS=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  var el=function(id){return document.getElementById(id);};
+  var board=el("tttBoard"),cells=board.querySelectorAll(".ttt-cell");
+  var msg=el("tttMsg"),bNew=el("btnNewGame"),bResetScore=el("btnResetScore");
+  var sYou=el("scoreYou"),sDraw=el("scoreDraw"),sAi=el("scoreAi");
+
+  var state=["","","","","","","","",""];
+  var player="X",ai="O",level="easy",over=false;
+
+  function loadScore(){try{var v=localStorage.getItem(LS_SCORE);return v?JSON.parse(v):{you:0,draw:0,ai:0};}catch(e){return{you:0,draw:0,ai:0};}}
+  function saveScore(s){try{localStorage.setItem(LS_SCORE,JSON.stringify(s));}catch(e){}}
+  function renderScore(){var s=loadScore();sYou.textContent=s.you;sDraw.textContent=s.draw;sAi.textContent=s.ai;}
+  function bump(key){var s=loadScore();s[key]++;saveScore(s);renderScore();}
+
+  function winner(b){
+    for(var i=0;i<WINS.length;i++){
+      var w=WINS[i],a=w[0],c=w[1],d=w[2];
+      if(b[a]&&b[a]===b[c]&&b[a]===b[d])return{mark:b[a],line:w};
+    }
+    return b.indexOf("")===-1?{mark:"draw",line:null}:null;
+  }
+  function empties(b){var r=[];for(var i=0;i<9;i++)if(!b[i])r.push(i);return r;}
+
+  function minimax(b,isMax,aiMark,plMark){
+    var w=winner(b);
+    if(w){
+      if(w.mark===aiMark)return{score:10};
+      if(w.mark===plMark)return{score:-10};
+      return{score:0};
+    }
+    var best=isMax?{score:-Infinity}:{score:Infinity};
+    var moves=empties(b);
+    for(var i=0;i<moves.length;i++){
+      b[moves[i]]=isMax?aiMark:plMark;
+      var r=minimax(b,!isMax,aiMark,plMark);
+      b[moves[i]]="";
+      r.index=moves[i];
+      if(isMax&&r.score>best.score)best=r;
+      if(!isMax&&r.score<best.score)best=r;
+    }
+    return best;
+  }
+  function bestMove(){
+    var r=minimax(state.slice(),true,ai,player);
+    return typeof r.index==="number"?r.index:empties(state)[0];
+  }
+  function aiMove(){
+    var moves=empties(state);
+    if(!moves.length||over)return;
+    var idx;
+    if(level==="easy"){idx=moves[Math.floor(Math.random()*moves.length)];}
+    else if(level==="medium"){
+      idx=(Math.random()<0.5)?bestMove():moves[Math.floor(Math.random()*moves.length)];
+    }
+    else{idx=bestMove();}
+    place(idx,ai);
+  }
+  function place(i,mark){
+    if(over||state[i])return;
+    state[i]=mark;
+    cells[i].textContent=mark;
+    cells[i].classList.add("filled",mark==="X"?"x":"o");
+    checkEnd();
+  }
+  function checkEnd(){
+    var w=winner(state);
+    if(!w)return;
+    over=true;
+    if(w.mark==="draw"){
+      msg.textContent="🤝 Barazim! Asnjeri s'fitoi.";
+      msg.className="ttt-msg draw";bump("draw");
+    }else if(w.mark===player){
+      msg.textContent="🎉 FITOVE! E munde AI-në!";
+      msg.className="ttt-msg good";bump("you");
+      highlight(w.line);
+    }else{
+      msg.textContent="🤖 AI fitoi këtë raund. Provo sërish!";
+      msg.className="ttt-msg bad";bump("ai");
+      highlight(w.line);
+    }
+  }
+  function highlight(line){
+    if(!line)return;
+    for(var i=0;i<line.length;i++)cells[line[i]].classList.add("win");
+  }
+  function newGame(){
+    state=["","","","","","","","",""];over=false;
+    for(var i=0;i<9;i++){cells[i].textContent="";cells[i].className="ttt-cell";}
+    msg.textContent="Ti luan i pari — fati i mbarë! 🍀";
+    msg.className="ttt-msg";
+  }
+  for(var i=0;i<9;i++){
+    (function(idx){
+      cells[idx].addEventListener("click",function(){
+        if(over||state[idx])return;
+        place(idx,player);
+        if(!over)setTimeout(aiMove,350);
+      });
+    })(i);
+  }
+  var chips=document.querySelectorAll(".ttt-chip");
+  for(var c=0;c<chips.length;c++){
+    chips[c].addEventListener("click",function(){
+      var lv=this.getAttribute("data-level"),mk=this.getAttribute("data-mark");
+      if(lv){
+        level=lv;
+        for(var i=0;i<chips.length;i++)if(chips[i].getAttribute("data-level"))chips[i].classList.toggle("active",chips[i]===this);
+      }
+      if(mk){
+        player=mk;ai=(mk==="X"?"O":"X");
+        for(var j=0;j<chips.length;j++)if(chips[j].getAttribute("data-mark"))chips[j].classList.toggle("active",chips[j]===this);
+      }
+      newGame();
+    });
+  }
+  bNew.addEventListener("click",newGame);
+  bResetScore.addEventListener("click",function(){
+    if(confirm("Të zerohet rezultati?")){saveScore({you:0,draw:0,ai:0});renderScore();}
+  });
+  renderScore();
+})();
+
+</script>
+<script>
+(function(){
+  var tabs={
+    html:{lang:"html",get:function(){return document.getElementById("demo").innerHTML.trim();}},
+    css:{lang:"css",get:function(){return document.getElementById("appcss").textContent.trim();}},
+    js:{lang:"javascript",get:function(){return document.getElementById("appjs").textContent.trim();}}
+  };
+  var view=document.getElementById("codeView"),cur="html";
+  function render(){
+    view.textContent=tabs[cur].get();
+    view.className="language-"+tabs[cur].lang;
+    if(window.hljs){delete view.dataset.highlighted;hljs.highlightElement(view);}
+    var bs=document.querySelectorAll(".ctab");
+    for(var i=0;i<bs.length;i++)bs[i].classList.toggle("active",bs[i].dataset.tab===cur);
+  }
+  var bs=document.querySelectorAll(".ctab");
+  for(var i=0;i<bs.length;i++)bs[i].addEventListener("click",function(){cur=this.dataset.tab;render();});
+  document.getElementById("copyBtn").addEventListener("click",function(){
+    var b=this,code=tabs[cur].get();
+    function done(t){b.textContent=t;setTimeout(function(){b.textContent="Kopjo kodin";},1600);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(code).then(function(){done("U kopjua ✓");},function(){done("Dështoi");});}
+    else{var ta=document.createElement("textarea");ta.value=code;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");done("U kopjua ✓");}catch(e){done("Dështoi");}document.body.removeChild(ta);}
+  });
+  render();
+})();
+</script>
+</body>
+</html>

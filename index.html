@@ -60,6 +60,75 @@ body{
 footer{text-align:center;padding:34px 20px 44px;color:var(--mut);font-size:14px;border-top:1px solid rgba(212,175,55,.14)}
 footer strong{color:var(--gold2)}
 /* ============ APP CSS (per projekt) ============ */
+/* ============ SHARED COMPONENTS (butona, tabela, histori) ============ */
+.sw-btn{border:none;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:.03em;
+  padding:14px 30px;border-radius:999px;transition:transform .18s,box-shadow .18s,opacity .18s}
+.sw-btn:disabled{opacity:.38;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+.sw-primary{background:linear-gradient(120deg,var(--gold2),var(--gold) 60%,#a8842a);color:#0a0e1a;
+  box-shadow:0 10px 26px rgba(212,175,55,.35)}
+.sw-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 14px 32px rgba(212,175,55,.5)}
+.sw-ghost{background:rgba(255,255,255,.06);color:var(--ink);border:1px solid var(--line)}
+.sw-ghost:hover:not(:disabled){transform:translateY(-2px);border-color:var(--gold)}
+.sw-danger{background:rgba(220,60,80,.14);color:#ff8fa0;border:1px solid rgba(220,60,80,.4);font-size:13px;padding:10px 22px;margin-top:12px}
+.sw-danger:hover{transform:translateY(-2px);background:rgba(220,60,80,.24)}
+.glass-inner{background:rgba(0,0,0,.22);border:1px solid rgba(212,175,55,.16);
+  border-radius:16px;padding:22px;margin-top:22px}
+.glass-inner h3{font-size:17px;margin-bottom:14px;color:var(--gold2);letter-spacing:.03em}
+.sw-count{display:inline-block;min-width:30px;padding:2px 10px;border-radius:999px;
+  background:rgba(212,175,55,.16);border:1px solid var(--line);font-size:13px;color:var(--gold2)}
+.sw-table-wrap{max-height:280px;overflow:auto;border-radius:12px}
+.sw-table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.sw-table thead th{position:sticky;top:0;background:#141b33;color:var(--gold2);text-transform:uppercase;
+  font-size:11px;letter-spacing:.14em;padding:10px}
+.sw-table td{padding:10px;border-top:1px solid rgba(212,175,55,.1)}
+.sw-table tbody tr:nth-child(even){background:rgba(255,255,255,.03)}
+.sw-empty td{color:var(--mut);font-style:italic;padding:18px!important}
+.sw-hist-list{display:flex;flex-direction:column;gap:10px;margin-bottom:6px}
+.sw-hist-item{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.035);
+  border:1px solid rgba(212,175,55,.14);border-radius:12px;padding:12px 16px;font-size:13.5px;text-align:left}
+.sw-hist-item .d{flex:1;color:var(--ink)}
+.sw-hist-item .t{color:var(--gold2);font-variant-numeric:tabular-nums;font-weight:700}
+.sw-hist-item .n{color:var(--mut)}
+.sw-hist-empty{color:var(--mut);font-style:italic;font-size:13.5px;padding:8px}
+.demo-tag{display:inline-block;font-size:11px;letter-spacing:.22em;color:var(--gold2);
+  border:1px dashed var(--line);border-radius:999px;padding:6px 16px;margin-bottom:20px}
+.hidden{display:none!important}
+.qr-controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:6px 0 10px}
+.qr-pane{max-width:640px;margin:0 auto}
+
+/* ============ SHARED COMPONENTS (butona, tabela, histori) ============ */
+.sw-btn{border:none;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:.03em;
+  padding:14px 30px;border-radius:999px;transition:transform .18s,box-shadow .18s,opacity .18s}
+.sw-btn:disabled{opacity:.38;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+.sw-primary{background:linear-gradient(120deg,var(--gold2),var(--gold) 60%,#a8842a);color:#0a0e1a;
+  box-shadow:0 10px 26px rgba(212,175,55,.35)}
+.sw-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 14px 32px rgba(212,175,55,.5)}
+.sw-ghost{background:rgba(255,255,255,.06);color:var(--ink);border:1px solid var(--line)}
+.sw-ghost:hover:not(:disabled){transform:translateY(-2px);border-color:var(--gold)}
+.sw-danger{background:rgba(220,60,80,.14);color:#ff8fa0;border:1px solid rgba(220,60,80,.4);font-size:13px;padding:10px 22px;margin-top:12px}
+.sw-danger:hover{transform:translateY(-2px);background:rgba(220,60,80,.24)}
+.glass-inner{background:rgba(0,0,0,.22);border:1px solid rgba(212,175,55,.16);
+  border-radius:16px;padding:22px;margin-top:22px}
+.glass-inner h3{font-size:17px;margin-bottom:14px;color:var(--gold2);letter-spacing:.03em}
+.sw-count{display:inline-block;min-width:30px;padding:2px 10px;border-radius:999px;
+  background:rgba(212,175,55,.16);border:1px solid var(--line);font-size:13px;color:var(--gold2)}
+.sw-table-wrap{max-height:280px;overflow:auto;border-radius:12px}
+.sw-table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.sw-table thead th{position:sticky;top:0;background:#141b33;color:var(--gold2);text-transform:uppercase;
+  font-size:11px;letter-spacing:.14em;padding:10px}
+.sw-table td{padding:10px;border-top:1px solid rgba(212,175,55,.1)}
+.sw-table tbody tr:nth-child(even){background:rgba(255,255,255,.03)}
+.sw-empty td{color:var(--mut);font-style:italic;padding:18px!important}
+.sw-hist-list{display:flex;flex-direction:column;gap:10px;margin-bottom:6px}
+.sw-hist-item{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.035);
+  border:1px solid rgba(212,175,55,.14);border-radius:12px;padding:12px 16px;font-size:13.5px;text-align:left}
+.sw-hist-item .d{flex:1;color:var(--ink)}
+.sw-hist-item .t{color:var(--gold2);font-variant-numeric:tabular-nums;font-weight:700}
+.sw-hist-item .n{color:var(--mut)}
+.sw-hist-empty{color:var(--mut);font-style:italic;font-size:13.5px;padding:8px}
+.demo-tag{display:inline-block;font-size:11px;letter-spacing:.22em;color:var(--gold2);
+  border:1px dashed var(--line);border-radius:999px;padding:6px 16px;margin-bottom:20px}
+
 /* ============ TIC-TAC-TOE CSS ============ */
 .ttt-demo{text-align:center}
 .ttt-setup{display:flex;flex-direction:column;gap:12px;align-items:center;margin:6px 0 22px}
